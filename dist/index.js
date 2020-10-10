@@ -25,14 +25,36 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var fs = __importStar(require("fs"));
 var path = __importStar(require("path"));
 var resolvers_1 = __importDefault(require("./resolvers"));
-var express_1 = __importDefault(require("express"));
-var apollo_server_express_1 = require("apollo-server-express");
-var app = express_1.default();
-var typeDefs = fs.readFileSync(path.join(__dirname, 'schema.graphql'), 'utf-8');
-var server = new apollo_server_express_1.ApolloServer({ typeDefs: typeDefs, resolvers: resolvers_1.default, introspection: true, playground: true, });
+// import express from 'express';
+var apollo_server_1 = require("apollo-server");
+// import cors from 'cors';
+// import { createServer } from 'http';
+// import { SubscriptionServer } from 'subscriptions-transport-ws'
+// import { execute, subscribe } from 'graphql';
+// const app = express();
+// // config cors middleware
+// app.use(cors());
+// config port
 var PORT = process.env.PORT || 80;
-server.applyMiddleware({ app: app });
-app.listen(PORT, function () {
-    console.log("Server running in " + PORT);
+// app.use('/graphql', express.json());
+// read to schema
+var typeDefs = fs.readFileSync(path.join(__dirname, 'schema.graphql'), 'utf-8');
+var apolloServer = new apollo_server_1.ApolloServer({ typeDefs: typeDefs, resolvers: resolvers_1.default, introspection: true, playground: true });
+apolloServer.listen({ port: PORT }).then(function (_a) {
+    var url = _a.url;
+    console.log("Running in " + url);
 });
+// const server = createServer(app);
+// apolloServer.applyMiddleware({ app });
+// server.listen(PORT, () => {
+//     new SubscriptionServer({
+//         execute,
+//         subscribe,
+//         schema: typeDefs,
+//     }, {
+//         server,
+//         path: '/subscriptions'
+//     });
+//     console.log(`Server running in ${PORT}`);
+// });
 //# sourceMappingURL=index.js.map
