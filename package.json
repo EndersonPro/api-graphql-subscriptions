@@ -8,7 +8,8 @@
     "tsc-init": "tsc --init",
     "start:dev": "nodemon",
     "start:debug": "tsc && node dist/index.js",
-    "start:prod": "rimraf dist && tsc && cpx src/schema.graphql dist/ && node dist/index.js"
+    "start:prod": "rimraf dist && tsc && cpx src/schema.graphql dist/ && node dist/index.js",
+    "prod:heroku": "node dist/index.js"
   },
   "author": "Enderson Vizcaino <enjaviga@gmail.com>",
   "license": "ISC",
