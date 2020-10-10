@@ -1,0 +1,24 @@
+{
+  "name": "api-graphql-subscriptions",
+  "version": "1.0.0",
+  "description": "Simple api graphQL with subscrition for test other apps",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc-init": "tsc --init",
+    "start:dev": "nodemon",
+    "start:debug": "tsc && node dist/index.js"
+  },
+  "author": "Enderson Vizcaino <enjaviga@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^2.18.2",
+    "graphql": "^15.3.0",
+    "uuid": "^8.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.3"
+  }
+}
