@@ -8,6 +8,7 @@
     "tsc-init": "tsc --init",
     "start:dev": "nodemon",
     "start:debug": "tsc && node dist/index.js",
+    "build": "rimraf dist && tsc && cpx src/schema.graphql dist/",
     "start:prod": "rimraf dist && tsc && cpx src/schema.graphql dist/ && node dist/index.js",
     "prod:heroku": "node dist/index.js"
   },
@@ -15,6 +16,8 @@
   "license": "ISC",
   "dependencies": {
     "apollo-server": "^2.18.2",
+    "apollo-server-express": "^2.18.2",
+    "express": "^4.17.1",
     "graphql": "^15.3.0",
     "uuid": "^8.3.1"
   },

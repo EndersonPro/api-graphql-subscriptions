@@ -24,12 +24,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var fs = __importStar(require("fs"));
 var path = __importStar(require("path"));
-var apollo_server_1 = require("apollo-server");
 var resolvers_1 = __importDefault(require("./resolvers"));
+var express_1 = __importDefault(require("express"));
+var apollo_server_express_1 = require("apollo-server-express");
+var app = express_1.default();
 var typeDefs = fs.readFileSync(path.join(__dirname, 'schema.graphql'), 'utf-8');
-var server = new apollo_server_1.ApolloServer({ typeDefs: typeDefs, resolvers: resolvers_1.default });
-server.listen().then(function (_a) {
-    var url = _a.url;
-    console.log("Server running in " + url);
+var server = new apollo_server_express_1.ApolloServer({ typeDefs: typeDefs, resolvers: resolvers_1.default });
+var PORT = process.env.PORT || 80;
+server.applyMiddleware({ app: app });
+app.listen(PORT, function () {
+    console.log("Server running in " + PORT);
 });
 //# sourceMappingURL=index.js.map
