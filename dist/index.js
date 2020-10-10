@@ -29,7 +29,7 @@ var express_1 = __importDefault(require("express"));
 var apollo_server_express_1 = require("apollo-server-express");
 var app = express_1.default();
 var typeDefs = fs.readFileSync(path.join(__dirname, 'schema.graphql'), 'utf-8');
-var server = new apollo_server_express_1.ApolloServer({ typeDefs: typeDefs, resolvers: resolvers_1.default });
+var server = new apollo_server_express_1.ApolloServer({ typeDefs: typeDefs, resolvers: resolvers_1.default, introspection: true, playground: true, });
 var PORT = process.env.PORT || 80;
 server.applyMiddleware({ app: app });
 app.listen(PORT, function () {

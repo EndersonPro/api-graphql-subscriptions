@@ -6,7 +6,7 @@ import { ApolloServer } from 'apollo-server-express';
 
 const app = express();
 const typeDefs = fs.readFileSync(path.join(__dirname, 'schema.graphql'), 'utf-8');
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({ typeDefs, resolvers, introspection: true, playground: true, });
 const PORT = process.env.PORT || 80;
 
 server.applyMiddleware({ app });
